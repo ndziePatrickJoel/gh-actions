@@ -5,24 +5,12 @@ on:
       - main
       - develop
       - "release/**"
-  pull_request:
-    branches:
-      - main
 jobs:
   build:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     steps:
       - name: Build step
         run: |
           echo "IP is ${{ vars.TEST_IP }}"
           echo "my name is ${{ vars.MY_NAME }}"
           echo "my secret is ${{ secrets.DOCKER_PASSWORD }}"
-  build_image:
-    runs-on: ubuntu-slim
-    needs: build
-    steps:
-      - name: Docker login
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
