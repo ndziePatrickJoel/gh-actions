@@ -16,3 +16,4 @@ jobs:
         run: |
           echo "IP is ${{ vars.TEST_IP }}"
           echo "my name is ${{ vars.MY_NAME }}"
+          echo "Unexisting variable is ${{ vars.NOT_FOUND }}"
