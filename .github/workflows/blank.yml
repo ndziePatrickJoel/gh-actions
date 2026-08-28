@@ -16,4 +16,13 @@ jobs:
         run: |
           echo "IP is ${{ vars.TEST_IP }}"
           echo "my name is ${{ vars.MY_NAME }}"
-          echo "Unexisting variable is ${{ vars.NOT_FOUND }}"
+          echo "my secret is ${{ secrets.DOCKER_PASSWORD }}"
+  build_image:
+    runs-on: ubutu-slim
+    needs: build
+    steps:
+      - name: Docker login
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
