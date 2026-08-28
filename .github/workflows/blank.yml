@@ -18,7 +18,7 @@ jobs:
           echo "my name is ${{ vars.MY_NAME }}"
           echo "my secret is ${{ secrets.DOCKER_PASSWORD }}"
   build_image:
-    runs-on: ubutu-slim
+    runs-on: ubuntu-slim
     needs: build
     steps:
       - name: Docker login
