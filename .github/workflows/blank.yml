@@ -1,4 +1,4 @@
-name: Hello
+name: Github Actions Demo
 on:
   push:
     branches:
@@ -6,11 +6,10 @@ on:
       - develop
       - "release/**"
 jobs:
-  build:
+  action-demo:
     runs-on: ubuntu-latest
     steps:
-      - name: Build step
-        run: |
-          echo "IP is ${{ vars.TEST_IP }}"
-          echo "my name is ${{ vars.MY_NAME }}"
-          echo "my secret is ${{ secrets.DOCKER_PASSWORD }}"
+      - name: Checkout the code
+        uses: actions/checkout@v4
+      - name: Print index.html file
+        run: cat index.html
